@@ -224,6 +224,23 @@ redisUsedMemoryRss OBJECT-TYPE
     top and ps."
     ::= { redisStatus 17 }
 
+redisRole OBJECT-TYPE
+    SYNTAX      ObjectString
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+    "role: Value is 'master' if the instance is slave of no one, or 'slave'
+     if the instance is enslaved to a master. Note that a slave can be master of another slave (daisy chaining)."
+    ::= { redisStatus 18 }
+
+redisMasterLinkStatus OBJECT-TYPE
+    SYNTAX      ObjectString
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+    "Status of the link (up/down)"
+    ::= { redisStatus 19 }
+
 -- conformance information
 
 redisMIBConformance OBJECT IDENTIFIER ::= { redis 2 }
@@ -261,7 +278,9 @@ redisGroup OBJECT-GROUP
       redisPubsubChannels,
       redisPubsubPatterns,
       redisUptime,
-      redisUsedMemoryRss
+      redisUsedMemoryRss,
+      redisRole,
+      redisMasterLinkStatus
     }
     STATUS    current
     DESCRIPTION

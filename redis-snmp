@@ -104,6 +104,27 @@ my %redis_keys = (
         'uptime_in_seconds',              # 16
         'used_memory_rss',                #17
     ],
+    '2.8.19' => [
+        'connected_clients',             # 1
+        'connected_slaves',              # 2
+        'used_memory',                   # 3
+        'changes_since_last_save',       # 4
+        'total_connections_received',    # 5
+        'total_commands_processed',      # 6
+        'used_cpu_sys',                  # 7
+        'used_cpu_user',                 # 8
+        'blocked_clients',               # 9
+        'evicted_keys',                  # 10
+        'expired_keys',                  # 11
+        'keyspace_hits',                 # 12
+        'keyspace_misses',               # 13
+        'pubsub_channels',               # 14
+        'pubsub_patterns',               # 15
+        'uptime_in_seconds',             # 16
+        'used_memory_rss',               #17
+        'role',                          #18
+        'master_link_status',            #19
+    ],
 );
 
 sub new {
@@ -185,6 +206,8 @@ my @types = (
     'Gauge32',      # 15
     'Gauge32',      # 16
     'Gauge32',      #17
+    'OctetString',  #18
+    'OctetString',  #19
 
 );
 
@@ -206,6 +229,8 @@ my @newkeys = (
     'redisPubsubPatterns',          # 15
     'redisUptime',                  # 16
     'redisUsedMemoryRss',           #17
+    'redisRole',                    #18
+    'redisMasterLinkStatus',        #19
 );
 
 run() unless caller();
